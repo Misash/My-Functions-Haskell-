@@ -57,3 +57,25 @@ length' :: (Num b) => [a] -> b
 length' [] = 0
 length' (_:xs) = 1 + length' xs 
 
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs 
+
+--Patterns '@'
+capital :: String -> String
+capital "" = "Empty list , Whoops!"
+capital all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x] 
+
+--Guards 
+bmiTell :: (RealFloat a) => a -> a -> String 
+bmiTell w h
+    | w / h ^2 <= 18.5 = "You're underweight ,you emo,you!"
+    | w / h ^2 <= 25.0 = "You're supposedly normal. Pff , I bet  you're ugly!"
+    | w / h ^2 <= 30.0 = "You're fat! Lose some weight, fatty!" 
+    | otherwise = "You're a whale , congratulations!"  
+
+
+max' :: (Ord a) => a -> a -> a 
+max' a b 
+    | a > b = a 
+    | otherwise = b 
