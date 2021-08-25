@@ -6,4 +6,6 @@ myLength xs = sum [1| _ <-xs]
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y +z
 
+factorial :: Integer -> Integer 
+
 
