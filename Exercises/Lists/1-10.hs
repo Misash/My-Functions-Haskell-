@@ -36,5 +36,26 @@ myButLast''' list =
     let len  = last (init list) 
     in  len 
 
+--Problem 3 
+-- Find the K'th element of a list
+
+--Solution with prelude 
+elementAt :: [a] -> Int -> a 
+elementAt xs n = xs !! (n-1)
+
+--Solution guards 
+elementAt' :: [a] -> Int -> a 
+elementAt' (x:_) 1 = x 
+elementAt' (_:xs) k = elementAt' xs (k-1)
+elementAt' _ _  = error "Index out of bounds"
+
+--Problema 4
+--Find the number of elements of a list 
+mylength :: [a] -> Int 
+mylength xs = sum [1 | x <- xs ]
+
+mylength' :: [a] -> Int 
+mylength' xs = case xs of [] -> 0
+                          (_:xs) -> 1 + mylength' xs
 
         
