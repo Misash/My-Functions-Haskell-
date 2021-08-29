@@ -49,13 +49,17 @@ elementAt' (x:_) 1 = x
 elementAt' (_:xs) k = elementAt' xs (k-1)
 elementAt' _ _  = error "Index out of bounds"
 
---Problema 4
+--Problem 4
 --Find the number of elements of a list 
 mylength :: [a] -> Int 
 mylength xs = sum [1 | x <- xs ]
 
+--using case 
 mylength' :: [a] -> Int 
 mylength' xs = case xs of [] -> 0
                           (_:xs) -> 1 + mylength' xs
 
-        
+--Problem 5
+-- Reverse a list 
+myReverse :: [a] -> [a]
+myReverse 
