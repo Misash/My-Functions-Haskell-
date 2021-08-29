@@ -62,4 +62,25 @@ mylength' xs = case xs of [] -> 0
 --Problem 5
 -- Reverse a list 
 myReverse :: [a] -> [a]
-myReverse 
+myReverse [] = error "Empy List ,dummy!"
+myReverse [x] = [x]
+myReverse (x:xs) = myReverse xs ++ [x]
+
+myReverse' :: [a] -> [a]
+myReverse' [] = error "Empty List!!"
+myReverse' list = func list []
+    where 
+        func [] reversed = reversed 
+        func (x:xs) reversed = func xs (x:reversed)
+
+--Problem 6 
+--Find out whether a list is a palindrome 
+
+isPalindrome :: Eq a => [a] -> Bool 
+isPalindrome list = 
+     if myReverse' list == list  
+     then True 
+     else False
+
+
+  
