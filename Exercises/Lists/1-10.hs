@@ -76,11 +76,15 @@ myReverse' list = func list []
 --Problem 6 
 --Find out whether a list is a palindrome 
 
-isPalindrome :: Eq a => [a] -> Bool 
+isPalindrome :: (Eq a) => [a] -> Bool 
 isPalindrome list = 
      if myReverse' list == list  
      then True 
      else False
 
+--Problem 7 
+--Transform a list 
 
-  
+data NestedList a = Elem a | List [NestedList a]
+
+
