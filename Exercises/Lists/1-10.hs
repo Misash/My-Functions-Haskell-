@@ -92,11 +92,18 @@ flatten (List []) = []
 flatten (Elem a) = [a]
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
+--Problem 9 
+{-Pack consecutive duplicates of list elements into sublists .
+    if a list copntains repeated elementd they should be placed
+         in separate sublists
+-}
 
-
-
-
-
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x:xs) = if x `elem` (head (pack xs))
+              then ((x:(head (pack xs))):(tail(pack xs)))
+              else [x]:(pack xs)
 
 
 
