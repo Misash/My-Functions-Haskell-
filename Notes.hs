@@ -140,6 +140,8 @@ hhead xs = case xs of [] -> error "No head for empty lists!"
 --Recursion 
 
 
+--ASCII 'a' -> 97
+import Data.Char (ord)
 
 
 
