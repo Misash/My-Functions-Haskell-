@@ -14,7 +14,3 @@ toRNA xs = if length txt == 0 then a else b
 
 
 
-
-
-
-
