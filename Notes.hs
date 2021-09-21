@@ -144,5 +144,6 @@ hhead xs = case xs of [] -> error "No head for empty lists!"
 import Data.Char (ord)
 
 
-
+--infi range
+[1,2..]
 
