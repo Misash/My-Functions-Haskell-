@@ -1,4 +1,7 @@
 
+
+
+
 --1
 
 unaCifra:: Int -> Bool
@@ -31,7 +34,7 @@ esMultiplo n = if n `mod` 2 == 0 then True else False
 
 mayor3::(Int  ,Int ,Int ) -> (Bool  ,Bool ,Bool )
 mayor3 (a,b,c) = ( fun a , fun b , fun c)
-    where fun x = if (mod x 3 == 0) then True else False
+    where fun x = if (x > 3) then True else False
 
 
 --6
@@ -60,12 +63,9 @@ impares xs = [ x | x <-sortedXs , x `mod` 2 /= 0  ]
 
 --8 
 
-
 busca_sub :: String -> [String] -> [String]
 busca_sub str words = [ w | w <- words , take (length str) w  == str && length str > 0  ]
    
   
 
 
-
-   

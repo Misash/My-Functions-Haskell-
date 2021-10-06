@@ -43,19 +43,6 @@ mini (x:y:xs)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 main::IO()
 
 main = do
