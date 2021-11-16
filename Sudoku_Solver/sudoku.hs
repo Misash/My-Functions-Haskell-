@@ -7,9 +7,13 @@ import Data.Function
 import Control.Applicative (Alternative, empty, (<|>))
 import Control.Monad
 
+
+
 data Cell = Fixed Int | Possible [Int] deriving (Show, Eq)
 type Row  = [Cell]
 type Grid = [Row]
+
+
 
 -- INPUT/OUTPUT FUNCTIONS
 
@@ -25,12 +29,14 @@ readGrid s
       | otherwise = Nothing
 
 
+
 -- funtions to read more readable
 showGrid :: Grid -> String
 showGrid = unlines . map (unwords . map showCell)
   where
     showCell (Fixed x) = show x
     showCell _ = "."
+
 
 showGridWithPossibilities :: Grid -> String
 showGridWithPossibilities = unlines . map (unwords . map showCell)
@@ -158,7 +164,28 @@ check g
     | solve g /= Nothing  && isGridFilled g = Solved
     | solve g == Nothing = Invalid
     | solve g /= Nothing = Valid
+
+
+
+--OUTPUT CONCAT
+
+-- funtions to read in one line like input e.g "1.233"
+showGridConcat :: Grid -> String
+showGridConcat = concat . map (concat . map showCell)
+  where
+    showCell (Fixed x) = show x
+    showCell _ = "."
     
+
+
+    
+Just mygrid = readGrid ""
+
+output::IO()
+output = do
+  putStrLn $ showGridConcat mygrid 
+
+
 
 main :: IO ()
 main = do
@@ -167,10 +194,12 @@ main = do
     case readGrid input of
       Nothing   -> putStrLn "Invalid input"
       Just grid -> case check grid of
-        Valid   -> putStrLn "This puzzle has a solution"
-        Invalid -> putStrLn "This puzzle has no solution"
-        Solved  -> putStrLn "Congratulations, this is the correct solution"
-        Empty   -> putStrLn "The grid is empty. Please enter some values "
+        Valid   -> putStrLn $ "\n" ++ showGrid grid ++ "\nThis puzzle has a solution"
+        Invalid -> putStrLn $ "\n" ++ showGrid grid ++ "This puzzle has no solution"
+        Solved  -> putStrLn $ "\n" ++ showGridConcat grid ++ " Congratulations, this is the correct solution"
+        Empty   -> putStrLn $ "\n" ++ showGrid grid ++ "The grid is empty. Please enter some values "
+
+
 
 
 
